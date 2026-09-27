@@ -1,0 +1,88 @@
+---
+sidebar_position: 7
+title: Docusaurus and VuePress
+description: A side-by-side rendering and syntax comparison for Docusaurus MDX and VuePress Markdown.
+---
+
+import {useState} from 'react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Docusaurus and VuePress
+
+Compare [the VuePress-flavored Markdown page](./vuepress-syntax.md) with this MDX page. Both files are rendered by Docusaurus here; VuePress-only features are shown as source so unsupported syntax stays visible instead of being misread as MDX.
+
+## Front matter, routes, and links {/* #front-matter-and-links */}
+
+Both tools use YAML front matter, Markdown headings, links, lists, tables, and fenced code blocks. Docusaurus also uses front matter for document IDs, sidebar placement, tags, and other docs metadata. The configured permalink is derived from the file path unless you set `slug`.
+
+| Source feature | Docusaurus | VuePress |
+| --- | --- | --- |
+| Front matter | Document metadata | Page metadata and theme behavior |
+| `.md` file | Markdown document | Markdown page |
+| `.mdx` file | Markdown plus JSX | Not a default VuePress page format |
+| Vue component tags | Not Vue components | Resolved by VuePress |
+
+Use [the matching VuePress examples](./vuepress-syntax.md#shared-markdown) to compare common syntax, or jump to [the Swagger demo](#interactive-openapi-demo).
+
+## Docusaurus MDX {/* #docusaurus-mdx */}
+
+MDX lets this page import React components and render them in the document. Click the counter to run the component in place:
+
+export const ClickCounter = () => {
+  const [count, setCount] = useState(0);
+  return <button type="button" onClick={() => setCount((value) => value + 1)}>Clicked {count} times</button>;
+};
+
+<ClickCounter />
+
+### Tabs and highlighted code
+
+The tab components below are provided by the Docusaurus theme. They are not plain Markdown and will not render in VuePress without an equivalent component or plugin.
+
+<Tabs groupId="example-language">
+  <TabItem value="javascript" label="JavaScript">
+
+```js title="hello.js" {2}
+const greeting = 'Hello';
+console.log(`${greeting}, docs!`);
+```
+
+  </TabItem>
+  <TabItem value="bash" label="Shell">
+
+```bash
+npm run start
+```
+
+  </TabItem>
+</Tabs>
+
+## Docusaurus callouts and details
+
+:::tip[Conversion check]
+This admonition syntax is supported by Docusaurus and VuePress. Similar-looking syntax does not guarantee identical theme styling or behavior.
+:::
+
+<details>
+  <summary>MDX can include HTML and JSX</summary>
+
+This collapsible section uses HTML details markup, which Docusaurus renders in MDX.
+</details>
+
+## Interactive OpenAPI demo {/* #interactive-openapi-demo */}
+
+The explorer below uses Swagger UI and the [demo OpenAPI 3.0 spec](/openapi/demo.yaml). Select **Try it out** on `GET /todos/{id}`, enter an ID, then execute the request. It calls JSONPlaceholder, so the browser needs network access.
+
+<iframe
+  title="Interactive Swagger UI for the demo OpenAPI specification"
+  src="/swagger-demo.html"
+  width="100%"
+  height="850"
+  loading="lazy"
+  style={{border: '1px solid var(--ifm-color-emphasis-300)', borderRadius: '4px'}}
+/>
+
+## VuePress-only syntax in Docusaurus {/* #vuepress-only-syntax */}
+
+The paired [VuePress Markdown page](./vuepress-syntax.md) includes VuePress component and container examples as fenced source. Docusaurus displays those examples rather than executing them; converting a VuePress site may require replacing its theme components and plugins.

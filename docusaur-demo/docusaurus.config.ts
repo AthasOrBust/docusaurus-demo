@@ -41,6 +41,11 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          lastVersion: 'current',
+          versions: {
+            current: {label: 'Latest', banner: 'none'},
+            '1.0.0': {label: '1.0.0', banner: 'unmaintained'},
+          },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -86,6 +91,10 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Tutorial',
+        },
+        {
+          type: 'docsVersionDropdown',
+          position: 'left',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
