@@ -5,6 +5,7 @@ description: A side-by-side rendering and syntax comparison for Docusaurus MDX a
 ---
 
 import {useState} from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -173,7 +174,7 @@ This collapsible section uses HTML details markup, which Docusaurus renders in M
 
 Static files placed in `static/` are available from the site root. This same URL style works in VuePress when the image is placed in its public directory:
 
-![Workspace-provided image used as a documentation asset](/img/dictionarysorrows.jpg)
+<img alt="Workspace-provided image used as a documentation asset" src={useBaseUrl('/img/dictionarysorrows.jpg')} />
 
 ```md
 ![Workspace-provided image](/img/dictionarysorrows.jpg)
@@ -209,7 +210,7 @@ flowchart LR
 
 ## Interactive OpenAPI demo {/* #interactive-openapi-demo */}
 
-The explorer below uses Swagger UI and the [Petstore OpenAPI 3.0 spec](/openapi/petstore.yaml), a small OpenAPI 3 definition for Swagger's public Petstore demo API. Select **Try it out** on `GET /pet/{petId}`, enter a pet ID, then execute the request. This calls the shared Petstore demo service, so the browser needs network access. The specification is an ordinary downloadable YAML asset; the explorer is a separate static page embedded in this MDX document.
+The explorer below uses Swagger UI and the <a href={useBaseUrl('/openapi/petstore.yaml')}>Petstore OpenAPI 3.0 spec</a>, a small OpenAPI 3 definition for Swagger's public Petstore demo API. Select **Try it out** on `GET /pet/{petId}`, enter a pet ID, then execute the request. This calls the shared Petstore demo service, so the browser needs network access. The specification is an ordinary downloadable YAML asset; the explorer is a separate static page embedded in this MDX document.
 
 ```yaml title="OpenAPI path excerpt"
 paths:
@@ -229,7 +230,7 @@ paths:
 
 <iframe
   title="Interactive Swagger UI for the demo OpenAPI specification"
-  src="/swagger-petstore.html"
+  src={useBaseUrl('/swagger-petstore.html')}
   width="100%"
   height="850"
   loading="lazy"

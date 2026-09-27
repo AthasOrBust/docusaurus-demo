@@ -5,6 +5,7 @@ description: A side-by-side rendering and syntax comparison for Docusaurus MDX a
 ---
 
 import {useState} from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -72,11 +73,11 @@ This collapsible section uses HTML details markup, which Docusaurus renders in M
 
 ## Interactive OpenAPI demo {/* #interactive-openapi-demo */}
 
-The explorer below uses Swagger UI and the [demo OpenAPI 3.0 spec](/openapi/demo.yaml). Select **Try it out** on `GET /todos/{id}`, enter an ID, then execute the request. It calls JSONPlaceholder, so the browser needs network access.
+The explorer below uses Swagger UI and the <a href={useBaseUrl('/openapi/demo.yaml')}>demo OpenAPI 3.0 spec</a>. Select **Try it out** on `GET /todos/{id}`, enter an ID, then execute the request. It calls JSONPlaceholder, so the browser needs network access.
 
 <iframe
   title="Interactive Swagger UI for the demo OpenAPI specification"
-  src="/swagger-demo.html"
+  src={useBaseUrl('/swagger-demo.html')}
   width="100%"
   height="850"
   loading="lazy"

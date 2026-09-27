@@ -12,7 +12,7 @@
     <script>
       window.onload = () => {
         SwaggerUIBundle({
-          url: '/openapi/petstore.yaml',
+          url: new URL('openapi/petstore.yaml', window.location.href).href,
           dom_id: '#swagger-ui',
           deepLinking: true,
           presets: [SwaggerUIBundle.presets.apis],
