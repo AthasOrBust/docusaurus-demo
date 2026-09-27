@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: Swagger Petstore Demo API
+  version: 1.0.0
+  description: A minimal OpenAPI 3 definition for the public Swagger Petstore sample service.
+servers:
+  - url: https://petstore.swagger.io/v2
+    description: Public Swagger Petstore demo server
+paths:
+  /pet/{petId}:
+    get:
+      operationId: getPetById
+      summary: Find a pet by ID
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          description: Identifier for the pet to retrieve
+          schema:
+            type: integer
+            format: int64
+            example: 1
+      responses:
+        '200':
+          description: Pet record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '404':
+          description: Pet not found
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        category:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+            name:
+              type: string
+        name:
+          type: string
+          example: doggie
+        photoUrls:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                format: int64
+              name:
+                type: string
+        status:
+          type: string
+          description: Pet status in the store
+          enum:
+            - available
+            - pending
+            - sold

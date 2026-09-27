@@ -126,19 +126,19 @@ See [the paired Docusaurus page](./docusaurus-vuepress.mdx#docusaurus-mdx) for i
 
 ## API specifications and executable examples
 
-VuePress can host an OpenAPI file as a static asset and render it with a theme component or plugin. There is no single built-in VuePress Swagger tag, so the syntax depends on the integration selected by the site. This project serves the same [OpenAPI demo spec](/openapi/demo.yaml) through Swagger UI embedded by the Docusaurus MDX page.
+VuePress can host an OpenAPI file as a static asset and render it with a theme component or plugin. There is no single built-in VuePress Swagger tag, so the syntax depends on the integration selected by the site. This project serves a small [Petstore OpenAPI spec](/openapi/petstore.yaml) through Swagger UI embedded by the Docusaurus MDX page.
 
 ```yaml
 openapi: 3.0.3
 info:
-	title: Documentation Demo API
+	title: Swagger Petstore Demo API
 	version: 1.0.0
 paths:
-	/todos/{id}:
+	/pet/{petId}:
 		get:
 			responses:
 				'200':
-					description: Todo record
+					description: Pet record
 ```
 
 Runnable snippets have the same caveat: a highlighted code fence is not automatically executable. Both sites need a component or plugin to run code, and API “Try it out” requests also depend on CORS, authentication, and network access.
